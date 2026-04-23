@@ -3,31 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Thrive Concierge Physical Therapy</title>
-
   <style>
     :root{
       --bg: #f7f5f1;
       --surface: #ffffff;
+      --surface-soft: #f1f5ef;
       --text: #243024;
       --muted: #5f6f5f;
-      --muted-light: #eef2ec;
+      --muted-2: #6f7e6f;
       --accent: #5f6f5f;
       --accent-dark: #4e5c4e;
       --border: #dde5da;
-      --shadow: 0 10px 30px rgba(0,0,0,0.06);
-      --radius: 18px;
-      --max-width: 1120px;
+      --shadow: 0 12px 32px rgba(0,0,0,0.06);
+      --radius: 20px;
+      --max-width: 1140px;
+      --nav-height: 78px;
     }
 
-    *{
-      box-sizing: border-box;
-    }
+    *{ box-sizing: border-box; }
 
-    html{
-      scroll-behavior: smooth;
-    }
+    html{ scroll-behavior: smooth; }
 
     body{
       margin: 0;
@@ -37,10 +33,9 @@
       line-height: 1.65;
     }
 
-    img{
-      max-width: 100%;
-      display: block;
-    }
+    img{ max-width: 100%; display: block; }
+
+    a{ color: inherit; }
 
     .container{
       width: 100%;
@@ -49,40 +44,32 @@
       padding: 0 20px;
     }
 
-    .section{
-      padding: 72px 0;
-    }
+    .section{ padding: 78px 0; }
 
-    h1, h2, h3, p{
-      margin-top: 0;
-    }
+    h1,h2,h3,p{ margin-top: 0; }
 
     h1{
-      font-size: clamp(2.2rem, 5vw, 4.25rem);
-      line-height: 1.05;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.02;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
     }
 
     h2{
-      font-size: clamp(1.75rem, 3vw, 2.4rem);
-      line-height: 1.15;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.12;
       margin-bottom: 14px;
-      color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
     }
 
-    .section-intro{
-      max-width: 700px;
-      font-size: 1.05rem;
-      color: #4c5a4c;
-      margin-bottom: 34px;
+    h3{
+      font-size: 1.12rem;
+      line-height: 1.3;
+      margin-bottom: 10px;
     }
 
-    p{
-      font-size: 1rem;
-    }
+    p{ font-size: 1rem; }
 
     .eyebrow{
       color: var(--accent);
@@ -93,40 +80,87 @@
       margin-bottom: 14px;
     }
 
-    .hero-wrap{
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.88), rgba(247,245,241,0.96)),
-        var(--bg);
-      padding: 28px 0 56px;
+    .section-intro{
+      max-width: 760px;
+      color: #4d5a4d;
+      font-size: 1.05rem;
+      margin-bottom: 34px;
     }
 
-    .topbar{
+    .site-header{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247,245,241,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav{
+      min-height: var(--nav-height);
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 8px 0 24px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .logo{
-      width: min(320px, 75vw);
-      margin: 0 auto;
+    .nav-brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .nav-logo{
+      width: 150px;
+      max-width: 42vw;
+    }
+
+    .nav-links{
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a{
+      text-decoration: none;
+      color: #445244;
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover{ color: var(--accent-dark); }
+
+    .nav-cta{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff !important;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-wrap{
+      background: linear-gradient(to bottom, rgba(255,255,255,0.92), rgba(247,245,241,0.96));
+      padding: 38px 0 54px;
     }
 
     .hero{
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 56px;
       align-items: center;
-      min-height: 520px;
-    }
-
-    .hero-copy{
-      max-width: 620px;
+      min-height: calc(100vh - var(--nav-height) - 60px);
     }
 
     .hero-copy p{
       font-size: 1.08rem;
-      color: #455345;
+      color: #445244;
+      max-width: 620px;
       margin-bottom: 28px;
     }
 
@@ -145,10 +179,11 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.98rem;
       transition: 0.2s ease;
       border: 1px solid transparent;
     }
+
+    .button:hover{ transform: translateY(-1px); }
 
     .button-primary{
       background: var(--accent);
@@ -156,20 +191,15 @@
       box-shadow: var(--shadow);
     }
 
-    .button-primary:hover{
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-    }
+    .button-primary:hover{ background: var(--accent-dark); }
 
     .button-secondary{
-      background: transparent;
+      background: white;
       color: var(--accent);
       border-color: var(--border);
     }
 
-    .button-secondary:hover{
-      background: white;
-    }
+    .button-secondary:hover{ background: var(--surface-soft); }
 
     .hero-points{
       display: flex;
@@ -178,8 +208,8 @@
     }
 
     .hero-pill{
-      background: var(--muted-light);
-      color: var(--accent-dark);
+      background: #eef3ec;
+      color: #4e5d4e;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 0.92rem;
@@ -188,7 +218,7 @@
 
     .hero-image-card{
       background: white;
-      border-radius: 28px;
+      border-radius: 30px;
       padding: 18px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(0,0,0,0.04);
@@ -198,13 +228,19 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 22px;
+    }
+
+    .services-grid,
+    .model-grid,
+    .why-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .model-grid{
-      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
     }
 
     .card{
@@ -213,30 +249,23 @@
       padding: 24px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(0,0,0,0.04);
+      height: 100%;
     }
 
     .card strong{
       display: block;
-      font-size: 1.02rem;
       margin-bottom: 8px;
-      color: var(--text);
+      font-size: 1.03rem;
     }
 
     .about-section{
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 42px;
       align-items: center;
     }
 
-    .about-copy{
-      max-width: 620px;
-    }
-
-    .about-copy p{
-      color: #455345;
-      margin-bottom: 18px;
-    }
+    .about-copy p{ color: #455345; }
 
     .about-highlights{
       display: grid;
@@ -250,42 +279,33 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 16px;
-      font-size: 0.95rem;
       color: #4b594b;
+      font-size: 0.95rem;
     }
 
-    .about-image-wrap{
-      display: flex;
-      justify-content: center;
-    }
+    .about-image-wrap{ display: flex; justify-content: center; }
 
     .Headshot{
-      width: min(420px, 100%);
+      width: min(440px, 100%);
       border-radius: 24px;
       box-shadow: var(--shadow);
       object-fit: cover;
     }
 
-    .service-area{
-      background: linear-gradient(180deg, #ffffff, #f3f6f1);
-      border-radius: 24px;
-      padding: 34px 28px;
+    .split-band{
+      background: linear-gradient(180deg, #ffffff, #f1f5ef);
+      border-radius: 28px;
+      padding: 34px 30px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
 
-    .service-area h2{
-      margin-bottom: 10px;
-    }
-
-    .contact{
-      padding: 80px 0;
-    }
+    .contact{ padding: 80px 0; }
 
     .contact-card{
       background: var(--accent);
       color: white;
-      border-radius: 28px;
+      border-radius: 30px;
       padding: 40px;
       box-shadow: var(--shadow);
       display: grid;
@@ -294,31 +314,23 @@
       align-items: start;
     }
 
-    .contact-card h2{
-      color: white;
-      margin-bottom: 14px;
-    }
+    .contact-card h2{ color: white; }
 
-    .contact-details p{
-      color: rgba(255,255,255,0.92);
-      margin-bottom: 20px;
-    }
-
-    .contact-details a{
-      color: white;
-      text-decoration: none;
-    }
+    .contact-details p{ color: rgba(255,255,255,0.92); }
 
     .contact-list{
       display: grid;
       gap: 12px;
+      margin: 24px 0 0;
       font-size: 1rem;
     }
 
-    form{
-      display: grid;
-      gap: 14px;
+    .contact-list a{
+      color: white;
+      text-decoration: none;
     }
+
+    form{ display: grid; gap: 14px; }
 
     input, textarea{
       width: 100%;
@@ -348,30 +360,38 @@
     }
 
     button:hover{
-      transform: translateY(-1px);
       background: #1b231b;
+      transform: translateY(-1px);
+    }
+
+    .form-note{
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      margin-top: 6px;
     }
 
     .footer{
-      padding: 26px 20px 40px;
+      padding: 24px 20px 42px;
       text-align: center;
-      color: #657265;
+      color: #667366;
       font-size: 0.92rem;
     }
 
-    @media (max-width: 900px){
+    @media (max-width: 980px){
       .hero,
       .about-section,
       .contact-card{
         grid-template-columns: 1fr;
       }
 
-      .hero{
-        gap: 32px;
+      .services-grid,
+      .why-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-copy{
-        max-width: 100%;
+      .hero{
+        min-height: auto;
+        gap: 34px;
       }
 
       .hero-image-card{
@@ -379,32 +399,28 @@
         margin: 0 auto;
       }
 
-      .about-image-wrap{
-        order: -1;
-      }
+      .about-image-wrap{ order: -1; }
     }
 
-    @media (max-width: 700px){
-      .section{
-        padding: 56px 0;
+    @media (max-width: 760px){
+      .section,
+      .contact{ padding: 56px 0; }
+
+      .hero-wrap{ padding: 24px 0 34px; }
+
+      .nav{
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
       }
 
-      .hero-wrap{
-        padding: 20px 0 42px;
+      .nav-links{
+        width: 100%;
+        gap: 14px;
       }
 
-      .topbar{
-        padding-bottom: 18px;
-      }
-
-      .hero{
-        min-height: auto;
-      }
-
-      .hero-copy p,
-      .section-intro,
-      p{
-        font-size: 0.98rem;
+      .nav-links a{
+        font-size: 0.92rem;
       }
 
       .hero-actions{
@@ -415,183 +431,254 @@
         width: 100%;
       }
 
+      .services-grid,
       .model-grid,
+      .why-grid,
       .about-highlights{
         grid-template-columns: 1fr;
       }
 
-      .card{
-        padding: 20px;
+      .card,
+      .split-band{
+        padding: 22px;
       }
 
       .contact-card{
         padding: 28px 20px;
-        border-radius: 22px;
+        border-radius: 24px;
       }
 
-      .service-area{
-        padding: 28px 20px;
+      .section-intro,
+      .hero-copy p,
+      p{
+        font-size: 0.98rem;
       }
     }
   </style>
 </head>
-
 <body>
-
-  <div class="hero-wrap">
+  <header class="site-header">
     <div class="container">
-      <div class="topbar">
-        <img src="logo.jpg" class="logo" alt="Thrive Concierge Physical Therapy logo">
-      </div>
+      <nav class="nav">
+        <a href="#top" class="nav-brand">
+          <img src="logo.jpg" class="nav-logo" alt="Thrive Concierge Physical Therapy logo">
+        </a>
 
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">In-home care. Clear plan. Lasting outcomes.</div>
-          <h1>Meeting you where you are</h1>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#model">T.H.R.I.V.E.</a>
+          <a href="#about">About</a>
+          <a href="#area">Area</a>
+          <a href="#contact" class="nav-cta">Request Appointment</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-          <p>
-            Thrive Concierge Physical Therapy delivers one-on-one physical therapy in your home with a clear plan,
-            continuous support between sessions, and lasting outcomes. We understand life is busy. Using the T.H.R.I.V.E.
-            model, we build a clear and measurable path to strength, performance, and confidence on your time.
-          </p>
+  <main id="top">
+    <div class="hero-wrap">
+      <div class="container">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">In-home care. Clear plan. Lasting outcomes.</div>
+            <h1>Meeting you where you are</h1>
+            <p>
+              Thrive Concierge Physical Therapy delivers one-on-one physical therapy in your home with a clear plan,
+              continuous support between sessions, and lasting outcomes. We understand life is busy. Using the T.H.R.I.V.E.
+              model, we build a clear and measurable path to strength, performance, and confidence on your time.
+            </p>
 
-          <div class="hero-actions">
-            <a href="#contact" class="button button-primary">Request Appointment</a>
-            <a href="mailto:megan@thriveconciergept.com" class="button button-secondary">Email Megan</a>
+            <div class="hero-actions">
+              <a href="#contact" class="button button-primary">Request Appointment</a>
+              <a href="mailto:megan@thriveconciergept.com" class="button button-secondary">Email Megan</a>
+            </div>
+
+            <div class="hero-points">
+              <div class="hero-pill">One-on-one care</div>
+              <div class="hero-pill">In-home visits</div>
+              <div class="hero-pill">Flexible scheduling</div>
+              <div class="hero-pill">Support between sessions</div>
+            </div>
           </div>
 
-          <div class="hero-points">
-            <div class="hero-pill">One-on-one care</div>
-            <div class="hero-pill">In-home visits</div>
-            <div class="hero-pill">Flexible scheduling</div>
-            <div class="hero-pill">Support between sessions</div>
+          <div class="hero-image-card">
+            <img src="Headshot.jpeg" alt="Megan Roberts, DPT">
           </div>
-        </div>
-
-        <div class="hero-image-card">
-          <img src="Headshot.jpeg" alt="Megan Roberts, DPT">
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="container">
-      <h2>T.H.R.I.V.E. Model</h2>
-      <p class="section-intro">
-        A structured approach designed to move you from pain and limitation toward strength, resilience, and confidence in daily life.
-      </p>
-
-      <div class="model-grid">
-        <div class="card">
-          <strong>T. Thorough Assessment</strong>
-          We identify the true driver of your symptoms so we can treat the cause, not just the symptoms.
-        </div>
-
-        <div class="card">
-          <strong>H. Holistic Restoration</strong>
-          Calm the system and restore control. We focus on pain modulation and foundational strength.
-        </div>
-
-        <div class="card">
-          <strong>R. Resilient Strength</strong>
-          We help you build durable capacity so you can confidently say, “I feel strong.”
-        </div>
-
-        <div class="card">
-          <strong>I. Integrated Performance</strong>
-          Your body needs to perform in real life. We integrate therapy with your life, whether that means sports,
-          marathon training, lifting mechanics, postpartum return to exercise, or other goals.
-        </div>
-
-        <div class="card">
-          <strong>V. Vitality Optimization</strong>
-          Longevity, not just recovery.
-        </div>
-
-        <div class="card">
-          <strong>E. Empowered Independence</strong>
-          We build autonomy, not dependency.
-        </div>
+        </section>
       </div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="about-section">
-        <div class="about-copy">
-          <div class="eyebrow">About Megan</div>
-          <h2>Individualized care designed around real life</h2>
-
-          <p>
-            Thrive Concierge Physical Therapy was created by Megan Roberts, DPT to provide a higher level of individualized care.
-            Treatment is delivered in your home, allowing more time, attention, and flexibility than traditional clinics.
-          </p>
-
-          <p>
-            The goal is simple: help patients move better, feel stronger, and return to the activities that matter most with a clear plan and consistent support.
-          </p>
-
-          <div class="about-highlights">
-            <div class="highlight">Personalized one-on-one treatment</div>
-            <div class="highlight">Care delivered in the comfort of your home</div>
-            <div class="highlight">Flexible scheduling for busy lives</div>
-            <div class="highlight">Performance, recovery, and long-term wellness</div>
-          </div>
-        </div>
-
-        <div class="about-image-wrap">
-          <img src="Headshot.jpeg" class="Headshot" alt="Megan Roberts, DPT">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="service-area">
-        <div class="eyebrow">Location</div>
-        <h2>Serving the greater Springfield area</h2>
-        <p>
-          In-home physical therapy for individuals and families throughout Springfield, Missouri and surrounding communities.
+    <section class="section" id="services">
+      <div class="container">
+        <div class="eyebrow">Services</div>
+        <h2>Care built for busy lives and meaningful goals</h2>
+        <p class="section-intro">
+          Thrive Concierge Physical Therapy is designed for people who want high-touch, individualized care without the inconvenience of a traditional clinic setting.
         </p>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-card">
-        <div class="contact-details">
-          <div class="eyebrow" style="color: rgba(255,255,255,0.75);">Get started</div>
-          <h2>Request an appointment</h2>
+        <div class="services-grid">
+          <div class="card">
+            <h3>In-home physical therapy</h3>
+            <p>Personalized treatment in the comfort of your home with more time, attention, and flexibility than a standard clinic visit.</p>
+          </div>
 
-          <p>
-            Reach out to schedule care or ask a question about whether Thrive Concierge Physical Therapy is the right fit.
-          </p>
+          <div class="card">
+            <h3>Performance and return to activity</h3>
+            <p>Support for athletes, runners, lifters, and active adults working to return to training, sport, or performance safely and confidently.</p>
+          </div>
 
-          <div class="contact-list">
-            <div>Megan Roberts, DPT</div>
-            <div><a href="tel:4174292358">417-429-2358</a></div>
-            <div><a href="mailto:megan@thriveconciergept.com">megan@thriveconciergept.com</a></div>
+          <div class="card">
+            <h3>Recovery with long-term strategy</h3>
+            <p>Not just symptom relief. Each plan is designed to help reduce pain, rebuild strength, and create lasting independence.</p>
           </div>
         </div>
-
-        <form>
-          <input type="text" placeholder="Name" aria-label="Name">
-          <input type="email" placeholder="Email" aria-label="Email">
-          <input type="tel" placeholder="Phone" aria-label="Phone">
-          <textarea placeholder="How can we help?" aria-label="How can we help?"></textarea>
-          <button type="submit">Submit</button>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="footer">
+    <section class="section" id="model">
+      <div class="container">
+        <div class="eyebrow">The framework</div>
+        <h2>T.H.R.I.V.E. Model</h2>
+        <p class="section-intro">
+          A structured process that helps turn uncertainty into a clear path forward, from evaluation through recovery, strength, and resilience.
+        </p>
+
+        <div class="model-grid">
+          <div class="card">
+            <strong>T. Thorough Assessment</strong>
+            We identify the true driver of your symptoms so treatment addresses the cause, not just the symptoms.
+          </div>
+
+          <div class="card">
+            <strong>H. Holistic Restoration</strong>
+            Calm the system and restore control with focused pain modulation and foundational strength.
+          </div>
+
+          <div class="card">
+            <strong>R. Resilient Strength</strong>
+            Build durable physical capacity so you can confidently say, “I feel strong.”
+          </div>
+
+          <div class="card">
+            <strong>I. Integrated Performance</strong>
+            Therapy is shaped around real life, whether that means sports, lifting mechanics, marathon training, postpartum return to exercise, or daily function.
+          </div>
+
+          <div class="card">
+            <strong>V. Vitality Optimization</strong>
+            The goal is longevity and quality of life, not just short-term recovery.
+          </div>
+
+          <div class="card">
+            <strong>E. Empowered Independence</strong>
+            We build autonomy, confidence, and long-term self-management rather than dependency.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-band">
+          <div class="eyebrow">Why concierge care</div>
+          <h2>A better experience than rushed, fragmented care</h2>
+          <p class="section-intro" style="margin-bottom:24px; max-width:880px;">
+            Concierge physical therapy offers a more personal and effective treatment experience by creating time and space for real problem solving, hands-on care, and follow-through.
+          </p>
+
+          <div class="why-grid">
+            <div class="card">
+              <h3>More time per visit</h3>
+              <p>Longer one-on-one sessions allow treatment to be thoughtful, focused, and individualized.</p>
+            </div>
+
+            <div class="card">
+              <h3>Care that fits your environment</h3>
+              <p>Being treated at home makes recommendations more practical and easier to apply in real life.</p>
+            </div>
+
+            <div class="card">
+              <h3>Clear communication</h3>
+              <p>You get a clear plan, consistent expectations, and support between visits when questions come up.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-section">
+          <div class="about-copy">
+            <div class="eyebrow">About Megan</div>
+            <h2>Individualized care designed around real life</h2>
+            <p>
+              Thrive Concierge Physical Therapy was created by Megan Roberts, DPT to provide a higher level of individualized care.
+              Treatment is delivered in your home, allowing more time, attention, and flexibility than traditional clinics.
+            </p>
+            <p>
+              The goal is simple: help patients move better, feel stronger, and return to the activities that matter most with a clear plan and consistent support.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight">Personalized one-on-one treatment</div>
+              <div class="highlight">Care delivered in the comfort of your home</div>
+              <div class="highlight">Flexible scheduling for busy lives</div>
+              <div class="highlight">Performance, recovery, and long-term wellness</div>
+            </div>
+          </div>
+
+          <div class="about-image-wrap">
+            <img src="Headshot.jpeg" class="Headshot" alt="Megan Roberts, DPT">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="area">
+      <div class="container">
+        <div class="split-band">
+          <div class="eyebrow">Service area</div>
+          <h2>Serving the greater Springfield area</h2>
+          <p class="section-intro" style="margin-bottom:0;">
+            In-home physical therapy for individuals and families throughout Springfield, Missouri and surrounding communities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-details">
+            <div class="eyebrow" style="color: rgba(255,255,255,0.76);">Get started</div>
+            <h2>Request an appointment</h2>
+            <p>
+              Reach out to schedule care or ask whether Thrive Concierge Physical Therapy is the right fit.
+            </p>
+
+            <div class="contact-list">
+              <div>Megan Roberts, DPT</div>
+              <div><a href="tel:4174292358">417-429-2358</a></div>
+              <div><a href="mailto:megan@thriveconciergept.com">megan@thriveconciergept.com</a></div>
+            </div>
+          </div>
+
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="Name" aria-label="Name" required>
+            <input type="email" name="email" placeholder="Email" aria-label="Email" required>
+            <input type="tel" name="phone" placeholder="Phone" aria-label="Phone">
+            <textarea name="message" placeholder="How can we help?" aria-label="How can we help?" required></textarea>
+            <button type="submit">Submit</button>
+            <div class="form-note">Replace <strong>your-form-id</strong> with your Formspree form ID to make submissions work on GitHub Pages.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     © Thrive Concierge Physical Therapy
-  </div>
-
+  </footer>
 </body>
 </html>
